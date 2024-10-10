@@ -20,6 +20,7 @@ public abstract class Character : MonoBehaviour
 
     public Animator anim;
     public Rigidbody2D rb;
+    public string owner;
 
     public bool IsDead()
     {
