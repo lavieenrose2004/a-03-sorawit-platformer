@@ -31,21 +31,22 @@ public class Ant : Enemy
 
         if (rb.position.x <= movePoints[0].position.x && velocity.x < 0)
         {
-            velocity *= -1;
-
-            Vector2 charScale = transform.localScale;
-            charScale.x *= -1;
-            transform.localScale = charScale;
+            FlipCharacter();
         }
 
         else if (rb.position.x >= movePoints[1].position.x && velocity.x > 0)
         {
-            velocity *= -1;
-
-            Vector2 charScale = transform.localScale;
-            charScale.x *= -1;
-            transform.localScale = charScale;
+            FlipCharacter();
         }
 
+    }
+
+    private void FlipCharacter()
+    {
+        velocity *= -1;
+
+        Vector2 charScale = transform.localScale;
+        charScale.x *= -1;
+        transform.localScale = charScale;
     }
 }
