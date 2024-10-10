@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -139,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7ded8b2cf6da341bbae44a2c4c7ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   anim: {fileID: 0}
   rb: {fileID: 0}
 --- !u!4 &12785358 stripped
@@ -1191,8 +1193,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9d9094fafb69d4f89e8766f1539194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  health: 0
+  anim: {fileID: 790388098}
   rb: {fileID: 0}
+  velocity: {x: 1, y: 0}
+  movePoints:
+  - {fileID: 1567555613}
+  - {fileID: 694683165}
+--- !u!95 &790388098 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9576784, guid: 3eeab7ca4bdca4ba382826bdc99b4911, type: 3}
+  m_PrefabInstance: {fileID: 341433136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &809091249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2452,6 +2464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee07a3a826bc4e419b3c320ce11c490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   anim: {fileID: 0}
   rb: {fileID: 0}
 --- !u!1 &1567555612
