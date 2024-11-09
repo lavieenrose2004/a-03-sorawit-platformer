@@ -20,6 +20,8 @@ public class Player : Character, IShootable
     private void Start()
     {
         Init(100);
+        BulletWaitTime = 0.0f;
+        BulletTimer = 2.0f;
     }
 
     private void Update()
