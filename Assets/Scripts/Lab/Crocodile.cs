@@ -24,15 +24,12 @@ public class Crocodile : Enemy
 
         Behaviour();
 
-        if(bulletTimer < 0)
-        {
-            bulletTimer = bulletWaitTime;
-        }
+        
     }
 
     public override void Behaviour()
     {
-        Vector2 direction = player.transform.position - transform.position;
+        Vector3 direction = player.transform.position - transform.position;
         float distance = direction.magnitude;
 
         if (distance < attackRange)
@@ -43,7 +40,12 @@ public class Crocodile : Enemy
 
     private void Shoot()
     {
-        Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
+        if (bulletTimer < 0)
+        {
+            Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
+
+            bulletTimer = bulletWaitTime;
+        }
     }
 
     
