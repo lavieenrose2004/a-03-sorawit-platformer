@@ -15,7 +15,9 @@ public class Crocodile : Enemy, IShootable
 
     private void Start()
     {
-        Init(30);       
+        Init(30);
+        BulletWaitTime = 1.0f;
+        BulletTimer = 5.0f;
     }
 
     private void FixedUpdate()
