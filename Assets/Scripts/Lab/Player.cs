@@ -13,7 +13,10 @@ public class Player : Character, IShootable
         //คลิกเม้าส์ซ้าย => shoot
         if (Input.GetButtonDown("Fire1") && (BulletTimer < 0)) 
         {
-            Instantiate(Bullet, BulletSpawnPoint.position, Quaternion.identity);
+            GameObject obj =  Instantiate(Bullet, BulletSpawnPoint.position, Quaternion.identity);
+            Banana banana = obj.GetComponent<Banana>();
+            banana.Init(10, this);
+            BulletTimer = BulletWaitTime;
         }
     }
 
@@ -32,6 +35,19 @@ public class Player : Character, IShootable
     private void FixedUpdate()
     {
         BulletTimer -= Time.deltaTime;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != null) {
+            OnHitWith(enemy);
+        }
+    }
+
+    public void OnHitWith(Enemy enemy)
+    {
+        TakeDamage(enemy.DamageHit);
     }
 
 }

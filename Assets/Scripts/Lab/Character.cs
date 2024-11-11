@@ -24,11 +24,18 @@ public abstract class Character : MonoBehaviour
 
     public bool IsDead()
     {
-        return Health <= 0;
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+            return true;
+        }
+        else return false;
     }
-    public void takeDmage(int damage)
+    public void TakeDamage(int damage)
     {
         Health -= damage;
+        Debug.Log($"{this.name} took  {damage} damage; Remaining Health: {this.health}");
+        IsDead();
     }
     public void Init(int newHealth)
     {

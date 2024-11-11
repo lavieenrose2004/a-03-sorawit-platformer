@@ -4,23 +4,34 @@ using UnityEngine;
 
 public class Banana : Weapon
 {
-    public float speed = 4f;
-    public int damage = 30;
+    [SerializeField] float speed = 4f;
+    
 
     private void Start()
     {
+        Damage = 10;
+        speed = 4.0f * GetShootDirection();
+    }
+
+    private void FixedUpdate()
+    {
         Move();
     }
- 
+
     public override void Move()
     {
         // พิมพ์ข้อความเมื่อเรียกใช้ Move
-        Debug.Log("Banana เคลื่อนที่ด้วย Transform ด้วยความเร็วคงที่");    
+        //Debug.Log("Banana เคลื่อนที่ด้วย Transform ด้วยความเร็วคงที่");
+        float newX = transform.position.x + speed * Time.fixedDeltaTime;
+        float newY = transform.position.y;
+        Vector2 newPosition = new Vector2(newX, newY);
+        transform.position = newPosition;
     }
 
     public override void OnHitWith(Character character)
     {
-        
+        if (character is Enemy)
+            character.TakeDamage(this.Damage);
     }
 }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Crocodile : Enemy, IShootable
 {
@@ -44,8 +45,10 @@ public class Crocodile : Enemy, IShootable
     {
         if (BulletTimer < 0)
         {
-            Instantiate(Bullet, BulletSpawnPoint.position, Quaternion.identity);
-
+            anim.SetTrigger("Shoot");
+            GameObject obj = Instantiate(Bullet, BulletSpawnPoint.position, Quaternion.identity);
+            Rock rockScript = obj.GetComponent<Rock>();
+            rockScript.Init(20, this);
             BulletTimer = BulletWaitTime;
         }
     }
